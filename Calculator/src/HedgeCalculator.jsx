@@ -122,7 +122,7 @@ const HedgeCalculator = () => {
             <p className="text-sm text-gray-500">
               This calculation shows the required stake for the second bet and
               the resulting profit for each scenario. The total investment
-              required is $
+              required is $ hah
               {(Number(newStake1) + Number(calculatedStake2)).toFixed(2)}.
             </p>
           </div>
