@@ -114,6 +114,7 @@ const ArbitrageCalculator = () => {
           >
             Calculate Arbitrage
           </button>
+          {!isArb && <h1>no Arbitrage</h1>}
         </div>
         {/* Results Section */}
         {targetWin && isArb && (

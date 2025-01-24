@@ -6,21 +6,42 @@ const HedgeCalculator = () => {
   const [scenario2Profit, setScenario2Profit] = useState(null);
   const [newOdds1, setNewOdds1] = useState("");
   const [newOdds2, setNewOdds2] = useState("");
-  const [newStake1, setNewStake1] = useState(50);
+  const [newStake1, setNewStake1] = useState(250);
+  const [oddsFormat, setOddsFormat] = useState("decimal");
+
+  const americanToDecimal = (american) => {
+    if (!american) return 0;
+    const numAmerican = Number(american);
+    if (numAmerican > 0) {
+      return numAmerican / 100 + 1;
+    } else {
+      return -100 / numAmerican + 1;
+    }
+  };
 
   const calculateOptimalStake2 = () => {
     const stake1Value = Number(newStake1);
 
-    const stake2 = (stake1Value * newOdds1) / newOdds2;
+    const odds1 =
+      oddsFormat === "american"
+        ? americanToDecimal(newOdds1)
+        : Number(newOdds1);
+    const odds2 =
+      oddsFormat === "american"
+        ? americanToDecimal(newOdds2)
+        : Number(newOdds2);
+
+    const stake2 = (stake1Value * odds1) / odds2;
     const totalStake = stake1Value + stake2;
 
-    const profitScenario1 = stake1Value * newOdds1 - totalStake;
-    const profitScenario2 = stake2 * newOdds2 - totalStake;
+    const profitScenario1 = stake1Value * odds1 - totalStake;
+    const profitScenario2 = stake2 * odds2 - totalStake;
 
     setCalculatedStake2(stake2.toFixed(2));
     setScenario1Profit(profitScenario1.toFixed(2));
     setScenario2Profit(profitScenario2.toFixed(2));
   };
+
   return (
     <>
       <div className="max-w-3xl mx-auto mt-8 p-6 bg-white rounded-xl shadow-md border border-gray-200">
@@ -28,6 +49,19 @@ const HedgeCalculator = () => {
           Hedge Calculator
         </h3>
         <div className="space-y-4">
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-medium mb-2">
+              Odds Format
+            </label>
+            <select
+              value={oddsFormat}
+              onChange={(e) => setOddsFormat(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            >
+              <option value="decimal">Decimal </option>
+              <option value="american">American </option>
+            </select>
+          </div>
           <div className="grid md:grid-cols-2 gap-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
@@ -39,7 +73,11 @@ const HedgeCalculator = () => {
                   value={newOdds1}
                   onChange={(e) => setNewOdds1(e.target.value)}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="Enter first odds"
+                  placeholder={
+                    oddsFormat === "decimal"
+                      ? "Enter decimal odds"
+                      : "Enter American odds"
+                  }
                 />
               </div>
               <div>
@@ -64,7 +102,11 @@ const HedgeCalculator = () => {
                 value={newOdds2}
                 onChange={(e) => setNewOdds2(e.target.value)}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                placeholder="Enter second odds"
+                placeholder={
+                  oddsFormat === "decimal"
+                    ? "Enter decimal odds"
+                    : "Enter American odds"
+                }
               />
             </div>
           </div>
