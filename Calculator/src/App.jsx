@@ -1,7 +1,7 @@
 import React from "react";
 import ArbitrageCalculator from "./ArbitrageCalculator";
 import HedgeCalculator from "./HedgeCalculator";
-import PushCalculator from "./pushCalculator";
+import NewCalc from "./NewCalc";
 
 const App = () => {
   return (
@@ -18,8 +18,8 @@ const App = () => {
             <div className="flex-1">
               <HedgeCalculator />
             </div>
+            <NewCalc />
           </div>
-          <PushCalculator />
         </div>
       </div>
     </>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const PushCalculator = () => {
+const NewCalc = () => {
   const [odds1, setOdds1] = useState(1.426); // Default odds1: -235
   const [odds2, setOdds2] = useState(2.05); // Default odds2: +105
   const [totalStake, setTotalStake] = useState(60); // Default total stake
@@ -293,4 +293,4 @@ const PushCalculator = () => {
   );
 };
 
-export default PushCalculator;
+export default NewCalc;
