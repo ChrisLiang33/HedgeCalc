@@ -18,8 +18,8 @@ const App = () => {
             <div className="flex-1">
               <HedgeCalculator />
             </div>
-            <NewCalc />
           </div>
+          <NewCalc />
         </div>
       </div>
     </>

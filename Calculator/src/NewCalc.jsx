@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 const NewCalc = () => {
-  const [odds1, setOdds1] = useState(1.426); // Default odds1: -235
-  const [odds2, setOdds2] = useState(2.05); // Default odds2: +105
+  const [odds1, setOdds1] = useState(0); // Default odds1: -235
+  const [odds2, setOdds2] = useState(0); // Default odds2: +105
   const [totalStake, setTotalStake] = useState(60); // Default total stake
   const [stake1, setStake1] = useState(0);
   const [stake2, setStake2] = useState(0);
