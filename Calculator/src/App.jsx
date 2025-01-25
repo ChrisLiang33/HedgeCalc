@@ -1,6 +1,7 @@
 import React from "react";
 import ArbitrageCalculator from "./ArbitrageCalculator";
 import HedgeCalculator from "./HedgeCalculator";
+import PushCalculator from "./pushCalculator";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
               <HedgeCalculator />
             </div>
           </div>
+          <PushCalculator />
         </div>
       </div>
     </>
