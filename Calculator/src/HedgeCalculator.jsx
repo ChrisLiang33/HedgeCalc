@@ -7,7 +7,7 @@ const HedgeCalculator = () => {
   const [newOdds1, setNewOdds1] = useState("");
   const [newOdds2, setNewOdds2] = useState("");
   const [newStake1, setNewStake1] = useState(250);
-  const [oddsFormat, setOddsFormat] = useState("decimal");
+  const [oddsFormat, setOddsFormat] = useState("american");
 
   const americanToDecimal = (american) => {
     if (!american) return 0;
