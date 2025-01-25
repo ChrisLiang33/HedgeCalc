@@ -25,6 +25,7 @@ const PushCalculator = () => {
       return 100 / Math.abs(american) + 1;
     }
   };
+  // test
 
   const decimalToAmerican = (decimal) => {
     if (!decimal || decimal <= 1) return 0;
