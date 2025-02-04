@@ -8,7 +8,7 @@ const NewCalc = () => {
   const [stake2, setStake2] = useState(0);
   const [error, setError] = useState("");
   const [profit, setProfit] = useState(0);
-  const [isDecimalOdds, setIsDecimalOdds] = useState(true);
+  const [isDecimalOdds, setIsDecimalOdds] = useState(false);
 
   // Add new state for input values
   const [odds1Input, setOdds1Input] = useState(
@@ -150,10 +150,8 @@ const NewCalc = () => {
             Total Stake ($)
             <input
               type="number"
-              min="0.01"
-              step="0.01"
               value={totalStake}
-              onChange={(e) => setTotalStake(parseFloat(e.target.value) || 0)}
+              onChange={(e) => setTotalStake(e.target.value)}
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
             />
           </label>
@@ -282,6 +280,17 @@ const NewCalc = () => {
                     <p className="text-sm text-red-700">
                       Loss: -${Number(totalStake).toFixed(2)}
                     </p>
+                  </div>
+                  <div>
+                    new odds created:{" "}
+                    {decimalToAmerican(
+                      (Number(stake1) * Number(odds1) -
+                        Number(stake1) +
+                        Number(stake2) * Number(odds2) -
+                        Number(stake2)) /
+                        totalStake +
+                        1
+                    )}
                   </div>
                 </div>
               </div>
