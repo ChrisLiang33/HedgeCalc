@@ -2,6 +2,7 @@ import React from "react";
 import ArbitrageCalculator from "./ArbitrageCalculator";
 import HedgeCalculator from "./HedgeCalculator";
 import NewCalc from "./NewCalc";
+import AddBoostOdds from "./AddBoostOdds";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
             </div>
           </div>
           <NewCalc />
+          <AddBoostOdds />
         </div>
       </div>
     </>
